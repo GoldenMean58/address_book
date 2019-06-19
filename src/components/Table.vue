@@ -89,21 +89,7 @@ export default {
   },
   methods: {
     updateForm (index, form) {
-      this.$set(this.tableData[index], 'QQ', form.QQ) // 直接覆盖会导致属性不是getter/setter而无法更新View
-      this.$set(this.tableData[index], 'address', form.address)
-      this.$set(this.tableData[index], 'age', form.age)
-      this.$set(this.tableData[index], 'cno', form.cno)
-      this.$set(this.tableData[index], 'email', form.email)
-      this.$set(this.tableData[index], 'grade', form.grade)
-      this.$set(this.tableData[index], 'major', form.major)
-      this.$set(this.tableData[index], 'name', form.name)
-      this.$set(this.tableData[index], 'pnum', form.pnum)
-      this.$set(this.tableData[index], 'province', form.province)
-      this.$set(this.tableData[index], 'sd', form.sd)
-      this.$set(this.tableData[index], 'sex', form.sex)
-      this.$set(this.tableData[index], 'sno', form.sno)
-      this.$set(this.tableData[index], 'tele', form.tele)
-      this.$set(this.tableData[index], 'wx', form.wx)
+      this.$set(this.tableData, index, form)
       console.log(this.tableData)
     },
     async deleteClick (row) {
@@ -124,25 +110,6 @@ export default {
       }
     },
     editClick (row) {
-      /*
-      this.form = {
-        QQ: row.QQ,
-        address: row.address,
-        age: row.age,
-        cno: row.cno,
-        email: row.email,
-        grade: row.grade,
-        major: row.major,
-        name: row.name,
-        pnum: row.pnum,
-        province: row.province,
-        sd: row.sd,
-        sex: row.sex,
-        sno: row.sno,
-        tele: row.tele,
-        wx: row.wx
-      }
-      */
       this.form = row
       this.old_cno = row.cno
       this.dialogFormVisible = true
