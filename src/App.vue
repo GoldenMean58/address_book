@@ -7,9 +7,10 @@
         <el-button @click="addData()">添加</el-button>
         <myform
             :dialog-form-visible.sync="dialogFormVisible"
-            :form="form"
+            :init-form="form"
             url="http://localhost:5000/add"
             @update:form="updateForm"
+            index="0"
         ></myform>
     </div>
 </template>

@@ -71,7 +71,7 @@
         </el-table>
         <myform
             :dialog-form-visible.sync="dialogFormVisible"
-            v-bind="form"
+            :init-form="form"
             :old_cno="old_cno"
             @update:form="updateForm"
             :index="selectedIndex"
