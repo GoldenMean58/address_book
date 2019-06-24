@@ -1,66 +1,34 @@
 <template>
     <div id="app">
-        <!--<router-view /> -->
-        <mytable :tableData="tableData"></mytable>
-        <myform url="http://localhost:5000/add"></myform>
-        <el-button @click="getData()">获取数据</el-button>
-        <el-button @click="addData()">添加</el-button>
-        <myform
-            :dialog-form-visible.sync="dialogFormVisible"
-            :init-form="form"
-            url="http://localhost:5000/add"
-            @update:form="updateForm"
-            index="0"
-        ></myform>
+        <router-view />
     </div>
 </template>
 
 <script>
 import mytable from './components/Table'
 import myform from './components/Form'
+import myEcharts from './components/myEcharts'
+import mytabs from './components/Tabs'
+import tab1 from './components/Tab1'
+import tab2 from './components/Tab2'
 export default {
   name: 'App',
+  mounted () {
+    this.$router.push('/table')
+  },
   methods: {
-    async getData () {
-      const axios = require('axios')
-      const response = await axios.post('http://localhost:5000/get')
-      this.tableData = response.data.data
-    },
-    addData () {
-      this.dialogFormVisible = true
-    },
-    updateForm (index, form) {
-      this.tableData.push(form)
-      console.log('updateForm')
-    }
   },
   data () {
     return {
-      tableData: [],
-      dialogFormVisible: false,
-      form:
-      {
-        QQ: '',
-        address: '',
-        age: '',
-        cno: '',
-        email: '',
-        grade: '',
-        major: '',
-        name: '',
-        pnum: '',
-        province: '',
-        sd: '',
-        sex: '',
-        sno: '',
-        tele: '',
-        wx: ''
-      }
     }
   },
   components: {
     mytable,
-    myform
+    myform,
+    myEcharts,
+    mytabs,
+    tab1,
+    tab2
   }
 }
 </script>

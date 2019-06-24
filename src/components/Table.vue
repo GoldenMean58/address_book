@@ -64,6 +64,7 @@
                         type="text"
                         size="small"
                         @click="editClick(scope.row)"
+                        @update:chart="updateChart"
                         >编辑</el-button
                     >
                 </template>
@@ -74,6 +75,7 @@
             :init-form="form"
             :old_cno="old_cno"
             @update:form="updateForm"
+            @update:chart="updateChart"
             :index="selectedIndex"
             url="http://localhost:5000/update"
         ></myform>
@@ -105,6 +107,7 @@ export default {
       if (response.data.code === 0) {
         console.log('删除成功')
         this.tableData.splice(row.index, 1)
+        this.$emit('update:form')
       } else {
         console.log('删除失败')
       }
@@ -117,6 +120,9 @@ export default {
     },
     rowClassName ({ row, rowIndex }) {
       row.index = rowIndex
+    },
+    updateChart () {
+      this.$emit('update:chart')
     }
   },
   props: ['tableData'],

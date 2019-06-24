@@ -93,7 +93,7 @@ export default {
         })
         if (response.data.code === 0) {
           this.$emit('update:form', this.index, this.form)
-          console.log('ok')
+          this.$emit('update:chart')
         } else {
         }
         console.log(response.data.msg)
